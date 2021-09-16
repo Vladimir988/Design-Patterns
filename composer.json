@@ -1,5 +1,5 @@
 {
-  "name": "Design Patterns",
+  "name": "Design-Patterns",
   "authors": [
     {
       "name": "Vladimir988"
@@ -7,7 +7,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "LinkedList\\": "src/"
+      "DesignPatterns\\": "src/"
     }
   }
 }
