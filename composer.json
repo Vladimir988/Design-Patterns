@@ -1,5 +1,6 @@
 {
   "name": "Design-Patterns",
+  "version": "1.0",
   "authors": [
     {
       "name": "Vladimir988"
@@ -9,5 +10,9 @@
     "psr-4": {
       "DesignPatterns\\": "src/"
     }
-  }
+  },
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {}
 }
