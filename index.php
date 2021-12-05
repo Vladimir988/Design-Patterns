@@ -7,6 +7,10 @@ use DesignPatterns\Creational\AbstractFactory\SteelDoorFactory;
 use DesignPatterns\Creational\Builder\BurgerBuilder;
 use DesignPatterns\Creational\Prototype\Sheep;
 use DesignPatterns\Creational\Singleton\President;
+use DesignPatterns\Structural\Adapter\Email;
+use DesignPatterns\Structural\Adapter\WebEmail;
+use DesignPatterns\Structural\Adapter\WebEmailAdapter;
+use DesignPatterns\Structural\Adapter\ClientCode;
 
 /**
  * Simple Factory
@@ -65,3 +69,15 @@ $cloned->setName( 'Holly' );
 $president1 = President::getInstance();
 $president2 = President::getInstance();
 //var_dump( $president1 === $president2 ); // true
+
+/**
+ * Adapter
+ */
+$email       = new Email();
+$senderEmail = new ClientCode($email);
+//$senderEmail->send('title', 'message');
+
+$webEmail        = new WebEmail();
+$webEmailAdapter = new WebEmailAdapter($webEmail);
+$senderWebEmail  = new ClientCode($webEmailAdapter);
+//$senderWebEmail->send('title', 'message');
