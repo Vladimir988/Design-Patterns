@@ -1,5 +1,6 @@
 <?php require_once __DIR__ . '/vendor/autoload.php';
 
+/* =============== Creational =============== */
 use DesignPatterns\Creational\SimpleFactory\DoorFactory;
 use DesignPatterns\Creational\FabricMethod\DevelopmentManager;
 use DesignPatterns\Creational\AbstractFactory\WoodenDoorFactory;
@@ -7,10 +8,15 @@ use DesignPatterns\Creational\AbstractFactory\SteelDoorFactory;
 use DesignPatterns\Creational\Builder\BurgerBuilder;
 use DesignPatterns\Creational\Prototype\Sheep;
 use DesignPatterns\Creational\Singleton\President;
+/* =============== Structural =============== */
 use DesignPatterns\Structural\Adapter\Email;
 use DesignPatterns\Structural\Adapter\WebEmail;
 use DesignPatterns\Structural\Adapter\WebEmailAdapter;
-use DesignPatterns\Structural\Adapter\ClientCode;
+use DesignPatterns\Structural\Adapter\ClientCode as AdapterClientCode;
+use DesignPatterns\Structural\Proxy\MainSubject;
+use DesignPatterns\Structural\Proxy\Proxy;
+use DesignPatterns\Structural\Proxy\ClientCode as ProxyClientCode;
+/* =============== Behavioral =============== */
 
 /**
  * Simple Factory
@@ -74,10 +80,21 @@ $president2 = President::getInstance();
  * Adapter
  */
 $email       = new Email();
-$senderEmail = new ClientCode($email);
+$senderEmail = new AdapterClientCode($email);
 //$senderEmail->send('title', 'message');
 
 $webEmail        = new WebEmail();
 $webEmailAdapter = new WebEmailAdapter($webEmail);
-$senderWebEmail  = new ClientCode($webEmailAdapter);
+$senderWebEmail  = new AdapterClientCode($webEmailAdapter);
 //$senderWebEmail->send('title', 'message');
+
+/**
+ * Proxy
+ */
+$mainSubject = new MainSubject();
+$client1     = new ProxyClientCode($mainSubject);
+//$client1->request();
+
+$proxy       = new Proxy($mainSubject);
+$client2     = new ProxyClientCode($proxy);
+//$client2->request();
